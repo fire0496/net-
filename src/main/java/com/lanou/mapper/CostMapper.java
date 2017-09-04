@@ -14,7 +14,7 @@ public interface CostMapper {
 
     List<Cost> findAll();
 
-    Cost findById(@Param("id")Integer id);
+    Cost findById(@Param("cost_id")Integer id);
 
     void update(Cost cost);
 

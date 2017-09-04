@@ -39,7 +39,7 @@ public class CostServiceImpl implements CostService {
     }
 
     public void addCost(Cost cost) {
-        //ID没有自增长 我们自己做一个
+        //ID没有自增长 那就自己做一个
         cost.setCost_id(mapper.findBylast().getCost_id() + 1);
 
         //写入状态和创建时间

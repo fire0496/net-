@@ -23,12 +23,7 @@
             var r = window.confirm("确定要启用此资费吗？资费启用后将不能修改和删除。");
             document.getElementById("operate_result_info").style.display = "block";
         }
-        //修改
-        function modify() {
-            var id = $(this).attr("cost_id");
 
-            window.location.href = 'fee_modi.html?cost_id='+id;
-        }
         //删除
         function deleteFee() {
             var r = window.confirm("确定要删除此资费吗？");
@@ -38,7 +33,7 @@
         function addFee(id,name,baseDuration,baseCost,unitCost,creatime,startime,status) {
             var td1 = $("<td></td>").html("<p>" + id + "</p>");
             var td2 = $("<td></td>");
-            $("<a href='/feedetail'>"+ name +"</a>").appendTo(td2);
+            $("<a href='#'>"+ name +"</a>").appendTo(td2).attr("cost_id",id).click(check);
             var td3 = $("<td></td>").html("<p>" + baseDuration + "</p>");
             var td4 = $("<td></td>").html("<p>" + baseCost + "</p>");
             var td5 = $("<td></td>").html("<p>" + unitCost + "</p>");
@@ -47,11 +42,29 @@
             var td8 = $("<td></td>").html("<p>" + status + "</p>");
             var td9 = $("<td></td>");
             $("<input type='button' value='启用' class='btn_start' onclick='startFee();'/>").appendTo(td9);
-            $("<input type='button' value='修改' class='btn_modify' />").appendTo(td9).attr("cost_id",id).click(modify);
+            $("<input type='button' value='修改' class='btn_modify' onclick='modi();' />").appendTo(td9);
             $("<input type='button' value='删除' class='btn_delete' onclick='deleteFee();'/>").appendTo(td9);
             var tr = $("<tr></tr>").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8).append(td9);
             $("#tbody").append(tr);
         }
+
+        var check = function () {
+            var sid = $(this).attr("cost_id")
+            $.ajax({
+                url:"/showCost",
+                type:"get",
+                data:{sid:sid},
+                success:function (result) {
+                    window.location.href="/feedetail?cost="+result;
+                }
+            })
+        }
+
+        function modi() {
+            var cost_id =$(this).attr("num")
+            window.location.href = "/fee_modi?cost_id="+cost_id;
+        }
+
 
         function newfunc() {
             var num = $(this).attr("nameid");
