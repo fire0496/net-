@@ -22,7 +22,7 @@ public class CostServiceImpl implements CostService {
 
     public PageInfo<Cost> findAll(Integer pageNum, Integer pageSize) {
         pageNum = pageNum == null ? 1 : pageNum;
-        pageSize = pageSize == null ? 3 : pageSize;
+        pageSize = pageSize == null ? 4 : pageSize;
         PageHelper.startPage(pageNum, pageSize);
         List<Cost> costList = mapper.findAll();
 
@@ -35,6 +35,12 @@ public class CostServiceImpl implements CostService {
     }
 
     public void update(Cost cost) {
+        System.out.println("Service"+cost);
+        cost.setStatus("1");
+        cost.setCreatime(
+                new Timestamp(System.currentTimeMillis())
+        );
+
         mapper.update(cost);
     }
 
@@ -53,6 +59,13 @@ public class CostServiceImpl implements CostService {
 
     public void deleteCost(Integer id) {
         mapper.deleteCost(id);
+    }
+
+    public void modiStatus(Cost cost) {
+        cost.setStartime(
+                new Timestamp(System.currentTimeMillis())
+        );
+        mapper.modiStatus(cost);
     }
 
 

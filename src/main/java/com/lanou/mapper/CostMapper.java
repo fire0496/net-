@@ -20,9 +20,9 @@ public interface CostMapper {
 
     void addCost(Cost cost);
 
-    void deleteCost(@Param("id")Integer id);
+    void deleteCost(@Param("cost_id")Integer id);
 
     Cost findBylast();
 
-
+    void modiStatus(Cost cost);
 }

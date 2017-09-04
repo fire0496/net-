@@ -13,13 +13,14 @@ import java.util.List;
 public interface CostService {
     PageInfo<Cost> findAll(Integer pageNum, Integer pageSize);
 
-    Cost findById(@Param("id")Integer id);
+    Cost findById(Integer id);
 
     void update(Cost cost);
 
     void addCost(Cost cost);
 
-    void deleteCost(@Param("id")Integer id);
+    void deleteCost(Integer id);
 
 
+    void modiStatus(Cost cost);
 }

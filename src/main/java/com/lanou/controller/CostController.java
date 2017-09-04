@@ -62,23 +62,9 @@ public class CostController {
 
     //跳转修改页面
     @RequestMapping(value = "/fee_modi")
-    public String toModify(@RequestParam("cost_id") Integer id, HttpSession session) {
-        Cost cost = service.findById(id);
-        session.setAttribute("cost", cost);
+    public String toModify() {
         return "fee/fee_modi";
     }
-
-    //获取修改的值
-    @RequestMapping(value = "/show")
-    @ResponseBody
-    public Map<String,Object> show(HttpSession session){
-        Cost cost = (Cost) session.getAttribute("cost");
-        HashMap<String,Object> map =new HashMap<String, Object>();
-        map.put("showCost",cost);
-        return map;
-    }
-
-
 
     //修改
     @RequestMapping(value = "/modifyCost")
@@ -100,6 +86,22 @@ public class CostController {
         Cost cost = service.findById(id);
         return cost;
     }
+
+    //删除
+    @RequestMapping(value = "/deleteCost")
+    @ResponseBody
+    public Integer deleteFee(@RequestParam("sid") Integer id){
+        service.deleteCost(id);
+        return id;
+    }
+
+    //修改status状态
+    @RequestMapping(value = "/modi_status")
+    public Integer modiStatus(Cost cost){
+        service.modiStatus(cost);
+        return cost.getCost_id();
+    }
+
 
 
 }
