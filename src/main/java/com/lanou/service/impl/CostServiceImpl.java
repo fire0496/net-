@@ -35,8 +35,8 @@ public class CostServiceImpl implements CostService {
     }
 
     public void update(Cost cost) {
-        System.out.println("Service"+cost);
-        cost.setStatus("1");
+
+
         cost.setCreatime(
                 new Timestamp(System.currentTimeMillis())
         );

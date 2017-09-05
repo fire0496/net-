@@ -25,12 +25,14 @@
             $.ajax({
                 url: "/modi_status",
                 type: "get",
-                data: {cost_id: sid},
-                success:function (result) {
-                    $("#tr"+result)
-                }
+                data: {cost_id: sid}
+//                ,success:function (result) {
+////                    document.getElementById("operate_result_info").style.display = "block";
+//                    $("#tr"+result).reload()
+//                }
+
             })
-            document.getElementById("operate_result_info").style.display = "block";
+            window.location.reload(true);
         }
 
         //删除

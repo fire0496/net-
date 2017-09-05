@@ -33,6 +33,8 @@
                         $("#base_cost").val(show.base_cost);
                         $("#unit_cost").val(show.unit_cost);
                         $("#descr").val(show.descr);
+                        $("input[name='cost_type'][value='"+show.cost_type+"']").attr("checked",true)
+
                     }
                 })
             }
@@ -123,12 +125,12 @@
                     <div class="validate_msg_short">50长度的字母、数字、汉字和下划线的组合</div>
                 </div>
                 <div class="text_info clearfix"><span>资费类型：</span></div>
-                <div class="input_info fee_type">
-                    <input type="radio" name="radFeeType" id="monthly" onclick="feeTypeChange(1);" />
+                <div class="input_info fee_type" >
+                    <input type="radio" name="cost_type" id="monthly" onclick="feeTypeChange(1);" value="1"/>
                     <label for="monthly">包月</label>
-                    <input type="radio" name="radFeeType" checked="checked" id="package" onclick="feeTypeChange(2);" />
+                    <input type="radio" name="cost_type" id="package" onclick="feeTypeChange(2);" value="2"/>
                     <label for="package">套餐</label>
-                    <input type="radio" name="radFeeType" id="timeBased" onclick="feeTypeChange(3);" />
+                    <input type="radio" name="cost_type" id="timeBased" onclick="feeTypeChange(3);" value="3"/>
                     <label for="timeBased">计时</label>
                 </div>
                 <div class="text_info clearfix"><span>基本时长：</span></div>

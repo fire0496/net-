@@ -30,7 +30,6 @@
                 type: "get",
                 data: {sid: sid},
                 success: function (show) {
-
                     $("#cost_id").val(show.cost_id);
                     $("#name").val(show.name);
                     $("#base_duration").val(show.base_duration);
@@ -39,6 +38,8 @@
                     $("#creatime").val(format(show.creatime));
                     $("#startime").val(show.startime == null ? "尚未启动" : format(show.startime));
                     $("#descr").val(show.descr);
+                    $("#select option[value='"+show.status+"']").attr("selected",true);
+                    $("input[name='cost_type'][value='"+show.cost_type+"']").attr("checked",true)
                 }
             })
         }
@@ -90,19 +91,19 @@
         <div class="input_info"><input type="text" class="readonly" name="name" id="name" readonly/></div>
         <div class="text_info clearfix"><span>资费状态：</span></div>
         <div class="input_info">
-            <select class="readonly" disabled>
-                <option>开通</option>
-                <option>暂停</option>
+            <select class="readonly" disabled id="select">
+                <option value="0">开通</option>
+                <option value="1">暂停</option>
                 <option>删除</option>
             </select>
         </div>
         <div class="text_info clearfix"><span>资费类型：</span></div>
         <div class="input_info fee_type">
-            <input type="radio" name="radFeeType" id="monthly" disabled="disabled"/>
+            <input type="radio" name="cost_type" id="monthly" disabled="disabled" value="1"/>
             <label for="monthly">包月</label>
-            <input type="radio" name="radFeeType" id="package" disabled="disabled"/>
+            <input type="radio" name="cost_type" id="package" disabled="disabled" value="2"/>
             <label for="package">套餐</label>
-            <input type="radio" name="radFeeType" checked="checked" id="timeBased" disabled="disabled"/>
+            <input type="radio" name="cost_type" id="timeBased" disabled="disabled" value="3"/>
             <label for="timeBased">计时</label>
         </div>
         <div class="text_info clearfix"><span>基本时长：</span></div>
