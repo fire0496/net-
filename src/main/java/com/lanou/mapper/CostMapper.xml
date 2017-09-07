@@ -26,6 +26,7 @@
       base_cost=#{base_cost},unit_cost=#{unit_cost},descr=#{descr},
       creatime=#{creatime},cost_type=#{cost_type} WHERE cost_id=#{cost_id}
     </update>
+
     <update id="modiStatus">
         UPDATE cost SET status = 0,startime=#{startime} WHERE cost_id=#{cost_id}
     </update>

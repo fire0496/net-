@@ -59,7 +59,7 @@
             var td5 = $("<td></td>").html("<p>" + unitCost == 0 | unitCost == null ? "—" : unitCost + "</p>");
             var td6 = $("<td></td>").html("<p>" + creatime == 0 | creatime == null ? "—" : format(creatime) + "</p>");
             var td7 = $("<td></td>").html("<p>" + startime == 0 | startime == null ? "—" : format(startime) + "</p>");
-            var td8 = $("<td></td>").attr("id","tr" + id).html("<p>" + status == 0 | status == 1 ? "暂停" : "开通" + "</p>");
+            var td8 = $("<td></td>").attr("id","tr" + id).html("<p>" + status == 0 | status == 1 ? "未启用" : "启用" + "</p>");
             var td9 = $("<td></td>");
             $("<input type='button' value='启用' class='btn_start' />").appendTo(td9).attr("cost_id", id).click(startFee);
             $("<input type='button' value='修改' class='btn_modify' />").appendTo(td9).attr("cost_id", id).click(modi);
@@ -171,7 +171,7 @@
         <li><a href="../role/role_list.html" class="role_off"></a></li>
         <li><a href="../admin/admin_list.html" class="admin_off"></a></li>
         <li><a href="/fee/fee_list" class="fee_on"></a></li>
-        <li><a href="../account/account_list.html" class="account_off"></a></li>
+        <li><a href="/account/account_list" class="account_off"></a></li>
         <li><a href="../service/service_list.html" class="service_off"></a></li>
         <li><a href="../bill/bill_list.html" class="bill_off"></a></li>
         <li><a href="../report/report_list.html" class="report_off"></a></li>
